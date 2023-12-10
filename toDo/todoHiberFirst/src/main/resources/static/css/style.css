@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap');
+body {
+  padding: 25px;
+  background-color: #000;
+  font-family: Manrope;
+}
+.form {
+  text-align: center;
+  padding: 10px;
+}
+.card {
+  background-color: #333;
+  color: #d3d3d3;
+}
+.todolistitem {
+  color: #d3d3d3;
+  cursor: default !important;
+  font-size: 15pt;
+  font-weight: bold;
+}
+#contentInput {
+  background-color: #f1f1f1;
+}
+.todolistitem:hover {
+  color: #d3d3d3;
+  cursor: default !important;
+}
+.form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 15pt;
+}
+* {
+  outline: none;
+}
