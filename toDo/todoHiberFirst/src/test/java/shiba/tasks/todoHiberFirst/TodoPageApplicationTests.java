@@ -21,15 +21,8 @@ import java.util.*;
 @Import(ToDoDao.class)
 class TodoPageApplicationTests {
     private static final Logger logger = LoggerFactory.getLogger("LoggerTestRepository");
-
-    private final ToDoDao dao;
     @Autowired
-    private TestEntityManager em;
-
-    @Autowired
-    TodoPageApplicationTests(ToDoDao dao) {
-        this.dao = dao;
-    }
+    private ToDoDao dao;
 
 //    @BeforeEach
 //    void setUp() {
