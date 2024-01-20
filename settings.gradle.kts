@@ -19,3 +19,4 @@ pluginManagement {
         id("com.google.protobuf") version protobufVer
     }
 }
+include("hw2")
