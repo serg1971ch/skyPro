@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class MainHw4<two> {
+public class MainHw5<two> {
     public static void main(String[] args) {
 /*   Задача 1.
 У  банка появилось мобильное приложение. Поэтому теперь, когда пользователь заходит на сайт с телефона,
