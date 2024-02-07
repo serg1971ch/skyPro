@@ -106,7 +106,6 @@ public class Hw5Application {
         } else  {
             // Доставка свыше 100 км невозможна
             System.out.println("Доставка недоступна");
-            return;
         }
 
         System.out.println("Потребуется дней: " + deliveryDays);
