@@ -64,14 +64,16 @@ public class Hw5Application {
 */
 
 
-        int year = ThreadLocalRandom.current().nextInt(1584, 2024 + 1);;
+        int year = ThreadLocalRandom.current().nextInt(1584, 2024 + 1);
 
-
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-            System.out.println(year + " год является високосным");
-        } else {
-            System.out.println(year + " год не является високосным");
+        if (year >= 1584) {
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                System.out.println(year + " год является високосным");
+            } else {
+                System.out.println(year + " год не является високосным");
+            }
         }
+
 
 
 /*   Задача 4
@@ -101,7 +103,7 @@ public class Hw5Application {
         } else if (deliveryDistance <= 100) {
             // Доставка в пределах от 60 км до 100 км добавляет еще одни сутки
             deliveryDays = 3;
-        } else if(deliveryDistance>100){
+        } else if (deliveryDistance > 100) {
             // Доставка свыше 100 км невозможна
             System.out.println("Доставка недоступна");
             return;
