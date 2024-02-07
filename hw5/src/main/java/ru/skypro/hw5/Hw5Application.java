@@ -103,7 +103,7 @@ public class Hw5Application {
         } else if (deliveryDistance <= 100) {
             // Доставка в пределах от 60 км до 100 км добавляет еще одни сутки
             deliveryDays = 3;
-        } else if (deliveryDistance > 100) {
+        } else  {
             // Доставка свыше 100 км невозможна
             System.out.println("Доставка недоступна");
             return;
