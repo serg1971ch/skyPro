@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -15,10 +17,9 @@ public class Main {
 Вспомните задание 2 из урока «Условные операторы», где вы предлагали пользователю облегченную версию приложения.
 */
         System.out.println("\nЗадача №2\n");
-        int clientDeviceYear = 2015;
         int currentClientDeviceYear = 2011;
-        int version = 1;
-        updateSystemDevice(clientDeviceYear, currentClientDeviceYear, version);
+        int os = 1;
+        updateSystemDevice(os, currentClientDeviceYear)
 
 /*
        Задача 3
@@ -31,7 +32,7 @@ public class Main {
     }
 
 
-    private static int getLeapYear(int year) {
+    private static void getLeapYear(int year) {
         int leapYear = 0;
         if (year >= 1584 && year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             leapYear = year;
@@ -39,22 +40,26 @@ public class Main {
         } else {
             System.out.println(year + " год не является високосным");
         }
-        return leapYear;
     }
 
-    private static void updateSystemDevice(int clientDeviceYear, int currentClientDeviceYear, int version) {
-        if (clientDeviceYear > currentClientDeviceYear) {
-            if (version == 0) {
-                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-            } else if (version == 1) {
-                System.out.println("Установите облегченную версию приложения для Android по ссылке");
-            }
-        } else {
-            System.out.println("Установите приложение");
+    private static void updateSystemDevice(int os, int currentClientDeviceYear) {
+        if (os != 0 && os != 1) {
+            System.out.println("Некорректное OC");
         }
+        int current = LocalDate.now().getYear();
+        StringBuilder builder = new StringBuilder("Установите ");
+        if (currentClientDeviceYear < current) {
+            builder.append("облегченную ");
+        }
+        if (os == 0) {
+            builder.append("IOS");
+        } else {
+            builder.append("Android");
+        }
+        System.out.println(builder);
     }
 
-    private static int getDeliveryDays(int deliveryDistance) {
+    private static void getDeliveryDays(int deliveryDistance) {
         int deliveryDays = 0;
         if (deliveryDistance <= 20) {
             // Доставка в пределах 20 км занимает сутки
@@ -70,6 +75,5 @@ public class Main {
             System.out.println("Доставка недоступна");
         }
         System.out.println("Потребуется дней: " + deliveryDays);
-        return deliveryDays;
     }
 }
