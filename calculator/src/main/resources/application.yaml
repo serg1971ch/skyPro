@@ -1,0 +1,9 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /calculator
+
+
+
+someParameter:
+  value: 5463
