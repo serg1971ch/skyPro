@@ -1,5 +1,6 @@
 package ru.otus.dz2._1;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OperationsTest {
+    private static final int ZERO_NUMBER = 0;
     private static final int FIRST_NUMBER = 1;
     private static final int SECOND_NUMBER = 2;
     private static final int THIRD_NUMBER = 3;
@@ -40,7 +42,15 @@ public class OperationsTest {
     }
 
     public static Stream<Arguments> provideParamsForDivideTest() {
-        return Stream.of(Arguments.of(Arguments.of(SEVEN_NUMBER, FIFTH_NUMBER, RESULT_DIVIDE))
+        return Stream.of(Arguments.of(SEVEN_NUMBER, FIFTH_NUMBER, RESULT_DIVIDE),
+                Arguments.of(SIXTH_NUMBER, THIRD_NUMBER, SECOND_NUMBER)
+        );
+    }
+
+    public static Stream<Arguments> provideParamsForDivideNegativeTest() {
+        return Stream.of(Arguments.of(SEVEN_NUMBER, ZERO_NUMBER),
+                Arguments.of(SIXTH_NUMBER, ZERO_NUMBER),
+                Arguments.of(THIRD_NUMBER, ZERO_NUMBER)
         );
     }
 
@@ -70,5 +80,11 @@ public class OperationsTest {
     public void shouldGenerateCorrectDivideOperationResult(int firstNumber, int secondNumber, int result) {
         Integer resultService = service.divide(firstNumber, secondNumber);
         assertEquals(resultService, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideParamsForDivideNegativeTest")
+     public void shouldGenerateCorrectDivideNegativeOperationResult(int firstNumber, int secondNumber) {
+        Assertions.assertThrows(DivisionByZeroException.class, () -> service.divide(firstNumber, secondNumber));
     }
 }
