@@ -1,0 +1,17 @@
+CREATE TABLE avatars (
+    id BIGINT PRIMARY KEY,               -- Идентификатор аватара
+    path_file VARCHAR(512) NOT NULL,    -- URL аватара
+    size VARCHAR(256) NOT NULL, -- Дата загрузки аватара
+    bytes LONGBLOB,                              -- Данные файла в виде байтов (для изображений)
+    student_id BIGINT,                      -- Идентификатор студента, который связан с аватаром
+    FOREIGN KEY (user_id) REFERENCES students(id)  -- Внешний ключ, связывающий с таблицей students
+);
+
+SELECT s.name AS student_name, s.age AS student_age, f.name AS faculty_name
+FROM students s
+JOIN faculties f ON s.faculty_id = f.id
+WHERE f.name = 'Хогвартс';
+
+SELECT s.name AS student_name, s.age AS student_age
+FROM students s
+JOIN avatars a ON s.id = a.student_id;

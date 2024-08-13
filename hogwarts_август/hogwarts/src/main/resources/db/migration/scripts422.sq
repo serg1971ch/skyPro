@@ -1,0 +1,24 @@
+-- Таблица для людей
+CREATE TABLE persons (
+    id VARCHAR(36) PRIMARY KEY,                   -- Уникальный идентификатор (можно использовать UUID)
+    name VARCHAR(100) NOT NULL,                    -- Имя человека
+    age VARCHAR(10) NOT NULL,                      -- Возраст представленный как строка
+    has_license VARCHAR(3) NOT NULL                -- Наличие прав ('yes' или 'no')
+);
+
+-- Таблица для машин
+CREATE TABLE cars (
+    id VARCHAR(36) PRIMARY KEY,                    -- Уникальный идентификатор (можно использовать UUID)
+    brand VARCHAR(100) NOT NULL,                   -- Марка машины
+    model VARCHAR(100) NOT NULL,                   -- Модель машины
+    price VARCHAR(20) NOT NULL                     -- Стоимость машины представлена как строка
+);
+
+-- Промежуточная таблица для связи людей и машин
+CREATE TABLE person_cars (
+    person_id VARCHAR(36),                         -- Идентификатор человека
+    car_id VARCHAR(36),                            -- Идентификатор машины
+    PRIMARY KEY (person_id, car_id),              -- Составной первичный ключ
+    FOREIGN KEY (person_id) REFERENCES persons(id), -- Внешний ключ к таблице persons
+    FOREIGN KEY (car_id) REFERENCES cars(id)       -- Внешний ключ к таблице cars
+);
