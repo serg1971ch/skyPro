@@ -1,0 +1,19 @@
+-- Таблица для людей
+CREATE TABLE persons (
+    id VARCHAR(36) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age VARCHAR(10) NOT NULL,
+    has_license VARCHAR(3) NOT NULL
+);
+
+-- Таблица для машин
+CREATE TABLE cars (
+    id VARCHAR(36) PRIMARY KEY,
+    person_id BIGINT NOT NULL,
+    brand VARCHAR(100) NOT NULL,
+    model VARCHAR(100) NOT NULL,
+    price VARCHAR(20) NOT NULL,
+    FOREIGN KEY(person_id) REFERENCES persons(id)
+);
+
+

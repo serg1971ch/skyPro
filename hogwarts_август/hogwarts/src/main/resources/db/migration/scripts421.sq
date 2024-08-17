@@ -1,0 +1,14 @@
+create table students (
+   id bigint primary key,
+   name varchar(256) unique not null,
+   age integer default 20 check(age >= 16),
+   faculty_id bigint,
+   foreign key (faculty_id) references table faculties(id)
+)
+
+create table faculties (
+   id bigint primary key,
+   color varchar(256) unique,
+   name varchar(256),
+   unique(name, color)
+}
