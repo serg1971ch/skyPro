@@ -13,12 +13,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import ru.skypro.hogwarts.model.Avatar;
-import ru.skypro.hogwarts.model.Faculty;
-import ru.skypro.hogwarts.model.Student;
-import ru.skypro.hogwarts.repository.AvatarRepository;
-import ru.skypro.hogwarts.repository.FacultyRepository;
-import ru.skypro.hogwarts.repository.StudentRepository;
+import ru.skyPro.hogwarts_.liquibase.model.Avatar;
+import ru.skyPro.hogwarts_.liquibase.model.Faculty;
+import ru.skyPro.hogwarts_.liquibase.model.Student;
+import ru.skyPro.hogwarts_.liquibase.repository.AvatarRepository;
+import ru.skyPro.hogwarts_.liquibase.repository.FacultyRepository;
+import ru.skyPro.hogwarts_.liquibase.repository.StudentRepository;
+
 
 import java.io.File;
 import java.io.IOException;
