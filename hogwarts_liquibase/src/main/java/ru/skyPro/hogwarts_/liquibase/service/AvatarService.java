@@ -1,6 +1,8 @@
 package ru.skyPro.hogwarts_.liquibase.service;
 
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.Page;
@@ -30,6 +32,7 @@ public class AvatarService {
     private final StudentRepository studentRepository;
     private final AvatarRepository avatarRepository;
     private final Path path;
+    private final Logger logger = LoggerFactory.getLogger(AvatarService.class);
 
     public AvatarService(StudentRepository studentRepository,
                          AvatarRepository avatarRepository,
@@ -41,6 +44,7 @@ public class AvatarService {
 
     @Transactional
     public void uploadAvatar(MultipartFile multipartFile, long studentId) {
+        logger.info("Was invoked method upload avatar");
         try {
             byte[] data = multipartFile.getBytes();
             String extension = StringUtils.getFilenameExtension(multipartFile.getOriginalFilename());
@@ -62,12 +66,14 @@ public class AvatarService {
     }
 
     public Pair<byte[], String> getAvatarFromDB(long studentId) {
+        logger.info("Was invoked method find avatar from database with student id = {}", studentId);
         Avatar avatar = avatarRepository.findByStudent_Id(studentId)
                 .orElseThrow(() -> new StudentNotFoundException(studentId));
         return Pair.of(avatar.getBytes(), avatar.getMediaType());
     }
 
     public Pair<byte[], String> getAvatarFromFS(long studentId) {
+        logger.info("Was invoked method find avatar from file with student id = {}", studentId);
         try {
             Avatar avatar = avatarRepository.findByStudent_Id(studentId)
                     .orElseThrow(() -> new StudentNotFoundException(studentId));
@@ -78,6 +84,7 @@ public class AvatarService {
     }
 
     public Page<Avatar> getAllAvatars(Pageable pageable) {
+        logger.info("Was invoked method for finding all avatars");
         return avatarRepository.findAll(pageable);
     }
 }
