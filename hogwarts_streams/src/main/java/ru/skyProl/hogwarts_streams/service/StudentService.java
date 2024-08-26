@@ -108,4 +108,46 @@ public class StudentService {
         return studentRepository.getLastFiveStudents();
     }
 
+    public void printParallel() {
+        logger.info("Was invoked method print parallel");
+        List<Student> students = studentRepository.findAll();
+        printName(students.get(0));
+        printName(students.get(1));
+
+        new Thread(()-> {
+            printName(students.get(2));
+            printName(students.get(3));
+        }).start();
+
+        new Thread(()-> {
+            printName(students.get(4));
+            printName(students.get(5));
+        }).start();
+    }
+
+    public void printParallelSynchronized() {
+        logger.info("Was invoked method print parallel");
+        List<Student> students = studentRepository.findAll();
+        printSynchronizedName(students.get(0));
+        printSynchronizedName(students.get(1));
+
+        new Thread(()-> {
+            printSynchronizedName(students.get(2));
+            printSynchronizedName(students.get(3));
+        }).start();
+
+        new Thread(()-> {
+            printSynchronizedName(students.get(4));
+            printSynchronizedName(students.get(5));
+        }).start();
+    }
+
+    private synchronized void  printSynchronizedName(Student student) {
+        logger.info(student.getName());
+    }
+
+    private void printName(Student student) {
+        logger.info(student.getName());
+    }
+
 }

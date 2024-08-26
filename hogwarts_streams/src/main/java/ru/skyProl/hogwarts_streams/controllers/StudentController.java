@@ -128,4 +128,14 @@ public class StudentController {
 
         logger.info("Operation time of option 2: " + (System.currentTimeMillis() - start2) +  " ms");
     }
+
+    @GetMapping("/print-parallel")
+    public void printStudentsInParallel() {
+        serviceBD.printParallel();
+    }
+
+    @GetMapping("/print-synchronized")
+    public void printStudentsSynchronized() {
+        serviceBD.printParallelSynchronized();
+    }
 }
